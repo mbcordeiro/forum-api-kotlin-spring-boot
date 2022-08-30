@@ -2,6 +2,7 @@ package br.com.matheuscordeiro.forum.exceptions
 
 import br.com.matheuscordeiro.forum.responses.ErrorResponse
 import org.springframework.http.HttpStatus
+import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
@@ -27,6 +28,21 @@ class ExceptionHandler {
             status = HttpStatus.INTERNAL_SERVER_ERROR.value(),
             error = HttpStatus.INTERNAL_SERVER_ERROR.name,
             message = exception.message,
+            path = request.servletPath
+        )
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException::class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    fun handleValidationError(exception: MethodArgumentNotValidException, request: HttpServletRequest): ErrorResponse {
+        val errorMassage = HashMap<String, String?>()
+        exception.bindingResult.fieldErrors.forEach{
+            it -> errorMassage[it.field] = it.defaultMessage
+        }
+        return ErrorResponse(
+            status = HttpStatus.BAD_REQUEST.value(),
+            error = HttpStatus.BAD_REQUEST.name,
+            message = errorMassage.toString(),
             path = request.servletPath
         )
     }
