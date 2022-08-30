@@ -38,4 +38,10 @@ class TopicServiceImpl(private var topics: List<Topic>) : TopicService {
     override fun findList(): List<Topic> {
         return topics
     }
+
+    override fun findById(id: Long): Topic {
+        return topics.first {
+            it.id == id
+        }
+    }
 }
