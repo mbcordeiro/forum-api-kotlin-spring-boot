@@ -1,17 +1,11 @@
 
 p
 @src/main/kotlin/br/com/matheuscordeiro/forum/ForumApplication.kt,6\c\6c267b0d28e66d628fdafc01f6793defdb3f4809
-k
-;src/main/kotlin/br/com/matheuscordeiro/forum/models/User.kt,a\1\a11fd764aeaa9547a797f586dfb1622e00e26c68
 x
 Hsrc/main/kotlin/br/com/matheuscordeiro/forum/models/enums/TopicStatus.kt,4\b\4b907787dcf641d866d42173aa200ff71497d652
-m
-=src/main/kotlin/br/com/matheuscordeiro/forum/models/Answer.kt,0\c\0c167232b18a2bf3c668113b53bfeafa52895672
 p
 @src/main/kotlin/br/com/matheuscordeiro/forum/dtos/NewTopicDto.kt,0\0\00378a95bd35a4e4e0be714545ac8de3ce0d50d5
 v
 Fsrc/main/kotlin/br/com/matheuscordeiro/forum/services/CourseService.kt,3\7\37c6da43da85b426abae17ab279ca8e47ec412e0
-m
-=src/main/kotlin/br/com/matheuscordeiro/forum/models/Course.kt,9\4\94da4c86cb234ceeb3a10c946971c5226f7187ed
 t
 Dsrc/main/kotlin/br/com/matheuscordeiro/forum/services/UserService.kt,d\4\d47ac09f876d2711c32fbaa8692e24f39c74702c
