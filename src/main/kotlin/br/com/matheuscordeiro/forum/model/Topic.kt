@@ -10,5 +10,6 @@ data class Topic(
     val dateCreation: LocalDateTime = LocalDateTime.now(),
     val course: Course,
     val author: User,
-    val status: TopicStatus = TopicStatus.UNANSWERED
+    val status: TopicStatus = TopicStatus.UNANSWERED,
+    val answers: List<Answer> = ArrayList()
 )
