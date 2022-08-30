@@ -1,13 +1,12 @@
 package br.com.matheuscordeiro.forum.services.impl
 
+import br.com.matheuscordeiro.forum.exceptions.NotFoundException
 import br.com.matheuscordeiro.forum.mappers.TopicRequestMapper
 import br.com.matheuscordeiro.forum.mappers.TopicResponseMapper
-import br.com.matheuscordeiro.forum.requests.NewTopicRequest
-import br.com.matheuscordeiro.forum.responses.TopicResponse
 import br.com.matheuscordeiro.forum.models.Topic
+import br.com.matheuscordeiro.forum.requests.NewTopicRequest
 import br.com.matheuscordeiro.forum.requests.UpdateTopicRequest
-import br.com.matheuscordeiro.forum.services.UserService
-import br.com.matheuscordeiro.forum.services.CourseService
+import br.com.matheuscordeiro.forum.responses.TopicResponse
 import br.com.matheuscordeiro.forum.services.TopicService
 import org.springframework.stereotype.Service
 
@@ -24,12 +23,10 @@ class TopicServiceImpl(
     }
 
     override fun findById(id: Long): TopicResponse {
-        return topicResponseMapper.map(topics.first {
-            it.id == id
-        })
+        return topicResponseMapper.map(findFirstById(id))
     }
 
-    override fun insert(newTopicRequest: NewTopicRequest) : TopicResponse{
+    override fun insert(newTopicRequest: NewTopicRequest): TopicResponse {
         val topic = topicRequestMapper.map(newTopicRequest)
         topic.id = topics.size.toLong() + 1
         topics = topics.plus(topic)
@@ -37,9 +34,7 @@ class TopicServiceImpl(
     }
 
     override fun update(updateTopicRequest: UpdateTopicRequest): TopicResponse {
-        val topic = topics.first {
-            it.id == updateTopicRequest.id
-        }
+        val topic = findFirstById(updateTopicRequest.id)
         val updateTopic = Topic(
             id = updateTopicRequest.id,
             tittle = updateTopicRequest.title,
@@ -55,8 +50,16 @@ class TopicServiceImpl(
     }
 
     override fun delete(id: Long) {
-        topics.minus(topics.first {
-            it.id == id
-        })
+        topics.minus(findFirstById(id))
+    }
+
+    fun findFirstById(id: Long): Topic {
+        try {
+            return topics.first {
+                it.id == id
+            }
+        } catch (e: NotFoundException) {
+            throw NotFoundException("Topic not found!");
+        }
     }
 }

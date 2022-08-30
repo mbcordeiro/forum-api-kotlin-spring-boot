@@ -1,6 +1,4 @@
 
-{
-Ksrc/main/kotlin/br/com/matheuscordeiro/forum/controllers/HelloController.kt,2\9\295faa2955f93b9727338002b76539795502d5b9
 p
 @src/main/kotlin/br/com/matheuscordeiro/forum/ForumApplication.kt,6\c\6c267b0d28e66d628fdafc01f6793defdb3f4809
 k
