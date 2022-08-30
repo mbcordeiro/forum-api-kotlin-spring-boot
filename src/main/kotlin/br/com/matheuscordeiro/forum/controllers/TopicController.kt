@@ -1,7 +1,7 @@
 package br.com.matheuscordeiro.forum.controllers
 
-import br.com.matheuscordeiro.forum.request.NewTopicRequest
-import br.com.matheuscordeiro.forum.response.TopicResponse
+import br.com.matheuscordeiro.forum.requests.NewTopicRequest
+import br.com.matheuscordeiro.forum.responses.TopicResponse
 import br.com.matheuscordeiro.forum.services.TopicService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

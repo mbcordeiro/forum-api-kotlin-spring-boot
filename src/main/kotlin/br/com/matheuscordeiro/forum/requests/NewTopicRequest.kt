@@ -1,4 +1,4 @@
-package br.com.matheuscordeiro.forum.request
+package br.com.matheuscordeiro.forum.requests
 
 data class NewTopicRequest(
     val title: String,

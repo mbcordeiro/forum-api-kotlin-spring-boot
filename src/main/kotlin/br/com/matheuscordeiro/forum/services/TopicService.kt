@@ -1,7 +1,7 @@
 package br.com.matheuscordeiro.forum.services
 
-import br.com.matheuscordeiro.forum.request.NewTopicRequest
-import br.com.matheuscordeiro.forum.response.TopicResponse
+import br.com.matheuscordeiro.forum.requests.NewTopicRequest
+import br.com.matheuscordeiro.forum.responses.TopicResponse
 
 interface TopicService {
     fun findList(): List<TopicResponse>

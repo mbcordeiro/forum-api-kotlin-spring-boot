@@ -3,8 +3,6 @@
 Ksrc/main/kotlin/br/com/matheuscordeiro/forum/controllers/HelloController.kt,2\9\295faa2955f93b9727338002b76539795502d5b9
 p
 @src/main/kotlin/br/com/matheuscordeiro/forum/ForumApplication.kt,6\c\6c267b0d28e66d628fdafc01f6793defdb3f4809
-l
-<src/main/kotlin/br/com/matheuscordeiro/forum/models/Topic.kt,e\0\e07eb14f88b831031baf7bfdb86e2ce9f33054d8
 k
 ;src/main/kotlin/br/com/matheuscordeiro/forum/models/User.kt,a\1\a11fd764aeaa9547a797f586dfb1622e00e26c68
 x

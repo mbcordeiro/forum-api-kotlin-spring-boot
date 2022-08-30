@@ -1,4 +1,4 @@
-package br.com.matheuscordeiro.forum.response
+package br.com.matheuscordeiro.forum.responses
 
 import br.com.matheuscordeiro.forum.models.enums.TopicStatus
 import java.time.LocalDateTime
