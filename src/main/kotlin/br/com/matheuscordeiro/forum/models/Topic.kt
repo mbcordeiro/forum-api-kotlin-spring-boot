@@ -5,11 +5,12 @@ import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
+@Table(name = "topic")
 data class Topic(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
-    val tittle: String,
-    val message: String,
+    var tittle: String,
+    var message: String,
     val dateCreation: LocalDateTime = LocalDateTime.now(),
     @ManyToOne
     val course: Course,

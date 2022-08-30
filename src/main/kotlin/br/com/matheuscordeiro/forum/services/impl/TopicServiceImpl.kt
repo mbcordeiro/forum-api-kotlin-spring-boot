@@ -4,20 +4,22 @@ import br.com.matheuscordeiro.forum.exceptions.NotFoundException
 import br.com.matheuscordeiro.forum.mappers.TopicRequestMapper
 import br.com.matheuscordeiro.forum.mappers.TopicResponseMapper
 import br.com.matheuscordeiro.forum.models.Topic
+import br.com.matheuscordeiro.forum.repositories.TopicRepository
 import br.com.matheuscordeiro.forum.requests.NewTopicRequest
 import br.com.matheuscordeiro.forum.requests.UpdateTopicRequest
 import br.com.matheuscordeiro.forum.responses.TopicResponse
 import br.com.matheuscordeiro.forum.services.TopicService
 import org.springframework.stereotype.Service
+import javax.transaction.Transactional
 
 @Service
 class TopicServiceImpl(
-    private var topics: List<Topic>,
+    private val topicRepository: TopicRepository,
     private val topicResponseMapper: TopicResponseMapper,
     private val topicRequestMapper: TopicRequestMapper
 ) : TopicService {
     override fun findList(): List<TopicResponse> {
-        return topics.map {
+        return topicRepository.findAll().map {
             topicResponseMapper.map(it)
         }
     }
@@ -26,38 +28,29 @@ class TopicServiceImpl(
         return topicResponseMapper.map(findFirstById(id))
     }
 
+    @Transactional
     override fun insert(newTopicRequest: NewTopicRequest): TopicResponse {
         val topic = topicRequestMapper.map(newTopicRequest)
-        topic.id = topics.size.toLong() + 1
-        topics = topics.plus(topic)
+        topicRepository.save(topic)
         return topicResponseMapper.map(topic)
     }
 
+    @Transactional
     override fun update(updateTopicRequest: UpdateTopicRequest): TopicResponse {
         val topic = findFirstById(updateTopicRequest.id)
-        val updateTopic = Topic(
-            id = updateTopicRequest.id,
-            tittle = updateTopicRequest.title,
-            message = updateTopicRequest.message,
-            author = topic.author,
-            course = topic.course,
-            answers = topic.answers,
-            status = topic.status,
-            dateCreation = topic.dateCreation
-        )
-        topics = topics.minus(topic).plus(updateTopic)
-        return topicResponseMapper.map(updateTopic)
+        topic.tittle = updateTopicRequest.title
+        topic.message = updateTopicRequest.message
+        topicRepository.save(topic)
+        return topicResponseMapper.map(topic)
     }
 
     override fun delete(id: Long) {
-        topics.minus(findFirstById(id))
+        topicRepository.deleteById(id)
     }
 
     fun findFirstById(id: Long): Topic {
         try {
-            return topics.first {
-                it.id == id
-            }
+            return topicRepository.getReferenceById(id)
         } catch (e: NotFoundException) {
             throw NotFoundException("Topic not found!");
         }
