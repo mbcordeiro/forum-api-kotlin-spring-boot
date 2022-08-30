@@ -1,4 +1,4 @@
-package br.com.matheuscordeiro.forum.model
+package br.com.matheuscordeiro.forum.models
 
 import java.time.LocalDateTime
 

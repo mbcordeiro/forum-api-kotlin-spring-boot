@@ -1,4 +1,4 @@
-package br.com.matheuscordeiro.forum.model.enums
+package br.com.matheuscordeiro.forum.models.enums
 
 enum class TopicStatus {
     UNANSWERED,

@@ -1,6 +1,6 @@
-package br.com.matheuscordeiro.forum.model
+package br.com.matheuscordeiro.forum.models
 
-import br.com.matheuscordeiro.forum.model.enums.TopicStatus
+import br.com.matheuscordeiro.forum.models.enums.TopicStatus
 import java.time.LocalDateTime
 
 data class Topic(
