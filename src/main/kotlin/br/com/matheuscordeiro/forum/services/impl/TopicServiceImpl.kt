@@ -29,28 +29,29 @@ class TopicServiceImpl(
         })
     }
 
-    override fun insert(newTopicRequest: NewTopicRequest) {
+    override fun insert(newTopicRequest: NewTopicRequest) : TopicResponse{
         val topic = topicRequestMapper.map(newTopicRequest)
         topic.id = topics.size.toLong() + 1
         topics = topics.plus(topic)
+        return topicResponseMapper.map(topic)
     }
 
-    override fun update(updateTopicRequest: UpdateTopicRequest) {
+    override fun update(updateTopicRequest: UpdateTopicRequest): TopicResponse {
         val topic = topics.first {
             it.id == updateTopicRequest.id
         }
-        topics = topics.minus(topic).plus(
-            Topic(
-                id = updateTopicRequest.id,
-                tittle = updateTopicRequest.title,
-                message = updateTopicRequest.message,
-                author = topic.author,
-                course = topic.course,
-                answers = topic.answers,
-                status = topic.status,
-                dateCreation = topic.dateCreation
-            )
+        val updateTopic = Topic(
+            id = updateTopicRequest.id,
+            tittle = updateTopicRequest.title,
+            message = updateTopicRequest.message,
+            author = topic.author,
+            course = topic.course,
+            answers = topic.answers,
+            status = topic.status,
+            dateCreation = topic.dateCreation
         )
+        topics = topics.minus(topic).plus(updateTopic)
+        return topicResponseMapper.map(updateTopic)
     }
 
     override fun delete(id: Long) {

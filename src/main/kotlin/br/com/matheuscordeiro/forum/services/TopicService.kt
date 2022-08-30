@@ -7,7 +7,7 @@ import br.com.matheuscordeiro.forum.responses.TopicResponse
 interface TopicService {
     fun findList(): List<TopicResponse>
     fun findById(id: Long): TopicResponse
-    fun insert(newTopicRequest: NewTopicRequest)
-    fun update(updateTopicRequest: UpdateTopicRequest)
+    fun insert(newTopicRequest: NewTopicRequest): TopicResponse
+    fun update(updateTopicRequest: UpdateTopicRequest): TopicResponse
     fun delete(id: Long)
 }

@@ -4,14 +4,10 @@ import br.com.matheuscordeiro.forum.requests.NewTopicRequest
 import br.com.matheuscordeiro.forum.requests.UpdateTopicRequest
 import br.com.matheuscordeiro.forum.responses.TopicResponse
 import br.com.matheuscordeiro.forum.services.TopicService
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
+import org.springframework.web.util.UriComponentsBuilder
 import javax.validation.Valid
 
 @RestController
@@ -28,16 +24,19 @@ class TopicController(private val topicService: TopicService) {
     }
 
     @PostMapping
-    fun create(@RequestBody @Valid newTopicRequest: NewTopicRequest) {
-        topicService.insert(newTopicRequest)
+    fun create(@RequestBody @Valid newTopicRequest: NewTopicRequest, uriComponentsBuilder: UriComponentsBuilder): ResponseEntity<TopicResponse> {
+        val topic = topicService.insert(newTopicRequest)
+        val uri = uriComponentsBuilder.path("/topics/${topic.id}").build().toUri()
+        return ResponseEntity.created(uri).body(topic)
     }
 
     @PutMapping
-    fun update(@RequestBody @Valid updateTopicRequest: UpdateTopicRequest) {
-        topicService.update(updateTopicRequest)
+    fun update(@RequestBody @Valid updateTopicRequest: UpdateTopicRequest) : ResponseEntity<TopicResponse>{
+        return ResponseEntity.ok(topicService.update(updateTopicRequest))
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     fun delete(@PathVariable id: Long) {
         topicService.delete(id)
     }
