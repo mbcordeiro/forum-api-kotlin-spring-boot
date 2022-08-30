@@ -1,5 +1,6 @@
 package br.com.matheuscordeiro.forum.controllers
 
+import br.com.matheuscordeiro.forum.dtos.NewTopicDto
 import br.com.matheuscordeiro.forum.models.Topic
 import br.com.matheuscordeiro.forum.services.TopicService
 import org.springframework.web.bind.annotation.GetMapping
@@ -23,7 +24,7 @@ class TopicController(private val topicService: TopicService) {
     }
 
     @PostMapping
-    fun create(@RequestBody topic: Topic) {
-        topicService.insert(topic)
+    fun create(@RequestBody newTopicDto: NewTopicDto) {
+        topicService.insert(newTopicDto)
     }
 }
