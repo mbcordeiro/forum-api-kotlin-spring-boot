@@ -24,7 +24,7 @@ class TopicServiceImpl(
     }
 
     override fun insert(newTopicDto: NewTopicDto) {
-        topics.plus(
+        topics = topics.plus(
             Topic(
                 id = topics.size.toLong() + 1,
                 tittle = newTopicDto.title,
