@@ -9,4 +9,5 @@ interface TopicService {
     fun findById(id: Long): TopicResponse
     fun insert(newTopicRequest: NewTopicRequest)
     fun update(updateTopicRequest: UpdateTopicRequest)
+    fun delete(id: Long)
 }

@@ -52,4 +52,10 @@ class TopicServiceImpl(
             )
         )
     }
+
+    override fun delete(id: Long) {
+        topics.minus(topics.first {
+            it.id == id
+        })
+    }
 }
