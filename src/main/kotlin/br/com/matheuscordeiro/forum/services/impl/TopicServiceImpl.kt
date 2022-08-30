@@ -5,6 +5,7 @@ import br.com.matheuscordeiro.forum.mappers.TopicResponseMapper
 import br.com.matheuscordeiro.forum.requests.NewTopicRequest
 import br.com.matheuscordeiro.forum.responses.TopicResponse
 import br.com.matheuscordeiro.forum.models.Topic
+import br.com.matheuscordeiro.forum.requests.UpdateTopicRequest
 import br.com.matheuscordeiro.forum.services.UserService
 import br.com.matheuscordeiro.forum.services.CourseService
 import br.com.matheuscordeiro.forum.services.TopicService
@@ -32,5 +33,23 @@ class TopicServiceImpl(
         val topic = topicRequestMapper.map(newTopicRequest)
         topic.id = topics.size.toLong() + 1
         topics = topics.plus(topic)
+    }
+
+    override fun update(updateTopicRequest: UpdateTopicRequest) {
+        val topic = topics.first {
+            it.id == updateTopicRequest.id
+        }
+        topics = topics.minus(topic).plus(
+            Topic(
+                id = updateTopicRequest.id,
+                tittle = updateTopicRequest.title,
+                message = updateTopicRequest.message,
+                author = topic.author,
+                course = topic.course,
+                answers = topic.answers,
+                status = topic.status,
+                dateCreation = topic.dateCreation
+            )
+        )
     }
 }
