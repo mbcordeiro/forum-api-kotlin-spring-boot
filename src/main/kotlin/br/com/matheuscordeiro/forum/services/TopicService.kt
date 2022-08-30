@@ -1,10 +1,10 @@
 package br.com.matheuscordeiro.forum.services
 
-import br.com.matheuscordeiro.forum.dtos.NewTopicDto
-import br.com.matheuscordeiro.forum.models.Topic
+import br.com.matheuscordeiro.forum.request.NewTopicRequest
+import br.com.matheuscordeiro.forum.response.TopicResponse
 
 interface TopicService {
-    fun findList(): List<Topic>
-    fun findById(id: Long): Topic
-    fun insert(newTopicDto: NewTopicDto)
+    fun findList(): List<TopicResponse>
+    fun findById(id: Long): TopicResponse
+    fun insert(newTopicRequest: NewTopicRequest)
 }

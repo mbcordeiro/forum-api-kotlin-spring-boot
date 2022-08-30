@@ -1,7 +1,7 @@
 package br.com.matheuscordeiro.forum.controllers
 
-import br.com.matheuscordeiro.forum.dtos.NewTopicDto
-import br.com.matheuscordeiro.forum.models.Topic
+import br.com.matheuscordeiro.forum.request.NewTopicRequest
+import br.com.matheuscordeiro.forum.response.TopicResponse
 import br.com.matheuscordeiro.forum.services.TopicService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/topics")
 class TopicController(private val topicService: TopicService) {
     @GetMapping
-    fun getList(): List<Topic> {
+    fun getList(): List<TopicResponse> {
         return topicService.findList()
     }
 
     @GetMapping("/{id}")
-    fun getById(@PathVariable id: Long): Topic {
+    fun getById(@PathVariable id: Long): TopicResponse {
         return topicService.findById(id)
     }
 
     @PostMapping
-    fun create(@RequestBody newTopicDto: NewTopicDto) {
-        topicService.insert(newTopicDto)
+    fun create(@RequestBody newTopicRequest: NewTopicRequest) {
+        topicService.insert(newTopicRequest)
     }
 }
