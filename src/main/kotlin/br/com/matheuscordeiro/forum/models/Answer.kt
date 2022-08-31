@@ -1,5 +1,6 @@
 package br.com.matheuscordeiro.forum.models
 
+import org.hibernate.Hibernate
 import java.time.LocalDateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -20,4 +21,20 @@ data class Answer(
     @ManyToOne
     val topic: Topic,
     val solved: Boolean
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
+        other as Answer
+
+        return id != null && id == other.id
+    }
+
+    override fun hashCode(): Int = javaClass.hashCode()
+
+    @Override
+    override fun toString(): String {
+        return this::class.simpleName + "(id = $id , message = $message , dateCreation = $dateCreation , " +
+                "author = $author , topic = $topic , solved = $solved )"
+    }
+}
