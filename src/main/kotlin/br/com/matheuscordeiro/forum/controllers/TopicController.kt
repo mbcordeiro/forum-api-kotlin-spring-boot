@@ -33,7 +33,7 @@ class TopicController(private val topicService: TopicService) {
 
     @GetMapping("/report")
     fun report(): List<TopicByCategoryDto> {
-        topicService.reportByCategory()
+        return topicService.reportByCategory()
     }
 
     @PostMapping
