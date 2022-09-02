@@ -9,6 +9,7 @@ import br.com.matheuscordeiro.forum.requests.NewTopicRequest
 import br.com.matheuscordeiro.forum.requests.UpdateTopicRequest
 import br.com.matheuscordeiro.forum.responses.TopicResponse
 import br.com.matheuscordeiro.forum.services.TopicService
+import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -38,6 +39,7 @@ class TopicServiceImpl(
     }
 
     @Transactional
+    @CacheEvict(value = ["topics"], allEntries = true)
     override fun insert(newTopicRequest: NewTopicRequest): TopicResponse {
         val topic = topicRequestMapper.map(newTopicRequest)
         topicRepository.save(topic)
