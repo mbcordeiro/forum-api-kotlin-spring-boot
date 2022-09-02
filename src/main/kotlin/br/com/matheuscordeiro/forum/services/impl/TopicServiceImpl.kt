@@ -9,6 +9,8 @@ import br.com.matheuscordeiro.forum.requests.NewTopicRequest
 import br.com.matheuscordeiro.forum.requests.UpdateTopicRequest
 import br.com.matheuscordeiro.forum.responses.TopicResponse
 import br.com.matheuscordeiro.forum.services.TopicService
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import javax.transaction.Transactional
 
@@ -18,8 +20,13 @@ class TopicServiceImpl(
     private val topicResponseMapper: TopicResponseMapper,
     private val topicRequestMapper: TopicRequestMapper
 ) : TopicService {
-    override fun findList(): List<TopicResponse> {
-        return topicRepository.findAll().map {
+    override fun findList(nameCourse: String?, pageable: Pageable): Page<TopicResponse> {
+        val topics = if (nameCourse == null) {
+            topicRepository.findAll(pageable)
+        } else {
+            topicRepository.findByCourseName(nameCourse, pageable)
+        }
+        return topics.map {
             topicResponseMapper.map(it)
         }
     }

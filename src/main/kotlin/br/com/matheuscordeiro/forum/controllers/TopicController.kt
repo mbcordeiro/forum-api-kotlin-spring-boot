@@ -4,6 +4,10 @@ import br.com.matheuscordeiro.forum.requests.NewTopicRequest
 import br.com.matheuscordeiro.forum.requests.UpdateTopicRequest
 import br.com.matheuscordeiro.forum.responses.TopicResponse
 import br.com.matheuscordeiro.forum.services.TopicService
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
+import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -14,8 +18,11 @@ import javax.validation.Valid
 @RequestMapping("/topics")
 class TopicController(private val topicService: TopicService) {
     @GetMapping
-    fun getList(): List<TopicResponse> {
-        return topicService.findList()
+    fun getList(
+        @RequestParam(required = false) nameCourse: String?,
+        @PageableDefault(size = 10, sort = ["dateCreation"], direction = Sort.Direction.DESC) pageable: Pageable
+    ): Page<TopicResponse> {
+        return topicService.findList(nameCourse, pageable)
     }
 
     @GetMapping("/{id}")
@@ -24,14 +31,17 @@ class TopicController(private val topicService: TopicService) {
     }
 
     @PostMapping
-    fun create(@RequestBody @Valid newTopicRequest: NewTopicRequest, uriComponentsBuilder: UriComponentsBuilder): ResponseEntity<TopicResponse> {
+    fun create(
+        @RequestBody @Valid newTopicRequest: NewTopicRequest,
+        uriComponentsBuilder: UriComponentsBuilder
+    ): ResponseEntity<TopicResponse> {
         val topic = topicService.insert(newTopicRequest)
         val uri = uriComponentsBuilder.path("/topics/${topic.id}").build().toUri()
         return ResponseEntity.created(uri).body(topic)
     }
 
     @PutMapping
-    fun update(@RequestBody @Valid updateTopicRequest: UpdateTopicRequest) : ResponseEntity<TopicResponse>{
+    fun update(@RequestBody @Valid updateTopicRequest: UpdateTopicRequest): ResponseEntity<TopicResponse> {
         return ResponseEntity.ok(topicService.update(updateTopicRequest))
     }
 
