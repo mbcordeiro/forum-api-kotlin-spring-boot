@@ -1,6 +1,4 @@
 
-p
-@src/main/kotlin/br/com/matheuscordeiro/forum/ForumApplication.kt,6\c\6c267b0d28e66d628fdafc01f6793defdb3f4809
 x
 Hsrc/main/kotlin/br/com/matheuscordeiro/forum/models/enums/TopicStatus.kt,4\b\4b907787dcf641d866d42173aa200ff71497d652
 v
@@ -21,5 +19,3 @@ m
 =src/main/kotlin/br/com/matheuscordeiro/forum/models/Course.kt,9\4\94da4c86cb234ceeb3a10c946971c5226f7187ed
 m
 =src/main/kotlin/br/com/matheuscordeiro/forum/models/Answer.kt,0\c\0c167232b18a2bf3c668113b53bfeafa52895672
-@
-build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d

@@ -9,6 +9,7 @@ import br.com.matheuscordeiro.forum.requests.NewTopicRequest
 import br.com.matheuscordeiro.forum.requests.UpdateTopicRequest
 import br.com.matheuscordeiro.forum.responses.TopicResponse
 import br.com.matheuscordeiro.forum.services.TopicService
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -20,6 +21,7 @@ class TopicServiceImpl(
     private val topicResponseMapper: TopicResponseMapper,
     private val topicRequestMapper: TopicRequestMapper
 ) : TopicService {
+    @Cacheable("topics")
     override fun findList(nameCourse: String?, pageable: Pageable): Page<TopicResponse> {
         val topics = if (nameCourse == null) {
             topicRepository.findAll(pageable)
