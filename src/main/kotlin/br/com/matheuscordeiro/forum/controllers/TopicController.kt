@@ -1,5 +1,6 @@
 package br.com.matheuscordeiro.forum.controllers
 
+import br.com.matheuscordeiro.forum.dto.TopicByCategoryDto
 import br.com.matheuscordeiro.forum.requests.NewTopicRequest
 import br.com.matheuscordeiro.forum.requests.UpdateTopicRequest
 import br.com.matheuscordeiro.forum.responses.TopicResponse
@@ -28,6 +29,11 @@ class TopicController(private val topicService: TopicService) {
     @GetMapping("/{id}")
     fun getById(@PathVariable id: Long): TopicResponse {
         return topicService.findById(id)
+    }
+
+    @GetMapping("/report")
+    fun report(): List<TopicByCategoryDto> {
+        topicService.reportByCategory()
     }
 
     @PostMapping

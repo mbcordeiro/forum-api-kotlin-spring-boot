@@ -1,5 +1,6 @@
 package br.com.matheuscordeiro.forum.services.impl
 
+import br.com.matheuscordeiro.forum.dto.TopicByCategoryDto
 import br.com.matheuscordeiro.forum.exceptions.NotFoundException
 import br.com.matheuscordeiro.forum.mappers.TopicRequestMapper
 import br.com.matheuscordeiro.forum.mappers.TopicResponseMapper
@@ -57,6 +58,10 @@ class TopicServiceImpl(
 
     override fun delete(id: Long) {
         topicRepository.deleteById(id)
+    }
+
+    override fun reportByCategory(): List<TopicByCategoryDto> {
+        return topicRepository.reportByCategory()
     }
 
     fun findFirstById(id: Long): Topic {
