@@ -13,5 +13,4 @@ interface TopicRepository : JpaRepository<Topic, Long> {
     @Query("SELECT NEW br.com.matheuscordeiro.forum.dto.TopicByCategoryDto(course.category, COUNT(t)) "
             + "FROM Topic t JOIN t.course GROUP BY course.category")
     fun reportByCategory(): List<TopicByCategoryDto>
-
 }

@@ -26,9 +26,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.flywaydb:flyway-core")
     implementation("org.springframework.boot:spring-boot-starter-cache")
+    implementation("org.springframework.boot:spring-boot-starter-security")
     runtimeOnly("org.postgresql:postgresql")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.security:spring-security-test")
 }
 
 buildscript {
