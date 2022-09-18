@@ -13,7 +13,8 @@ data class User(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     val name: String,
-    val email: String
+    val email: String,
+    val password: String
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -24,9 +25,8 @@ data class User(
     }
 
     override fun hashCode(): Int = javaClass.hashCode()
-
-    @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id , name = $name , email = $email )"
+        return "User(id=$id, name='$name', email='$email', password='$password')"
     }
+
 }

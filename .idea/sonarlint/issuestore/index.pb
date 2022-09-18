@@ -3,16 +3,6 @@ x
 Hsrc/main/kotlin/br/com/matheuscordeiro/forum/models/enums/TopicStatus.kt,4\b\4b907787dcf641d866d42173aa200ff71497d652
 v
 Fsrc/main/kotlin/br/com/matheuscordeiro/forum/services/CourseService.kt,3\7\37c6da43da85b426abae17ab279ca8e47ec412e0
-t
-Dsrc/main/kotlin/br/com/matheuscordeiro/forum/services/UserService.kt,d\4\d47ac09f876d2711c32fbaa8692e24f39c74702c
-{
-Ksrc/main/kotlin/br/com/matheuscordeiro/forum/repositories/UserRepository.kt,7\c\7c7d522151a0a4aaa2ce5fc7eec37b638486087e
-
-Osrc/main/kotlin/br/com/matheuscordeiro/forum/services/impl/CourseServiceImpl.kt,a\3\a3828d0d54d9c9010c6edf0ed53d37434f38bdef
-}
-Msrc/main/kotlin/br/com/matheuscordeiro/forum/services/impl/UserServiceImpl.kt,4\2\42289955cc0428789c0d87850b9f1614a9f6c4e9
-k
-;src/main/kotlin/br/com/matheuscordeiro/forum/models/User.kt,a\1\a11fd764aeaa9547a797f586dfb1622e00e26c68
 l
 <src/main/kotlin/br/com/matheuscordeiro/forum/models/Topic.kt,e\0\e07eb14f88b831031baf7bfdb86e2ce9f33054d8
 m
