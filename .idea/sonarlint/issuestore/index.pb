@@ -3,8 +3,6 @@ x
 Hsrc/main/kotlin/br/com/matheuscordeiro/forum/models/enums/TopicStatus.kt,4\b\4b907787dcf641d866d42173aa200ff71497d652
 v
 Fsrc/main/kotlin/br/com/matheuscordeiro/forum/services/CourseService.kt,3\7\37c6da43da85b426abae17ab279ca8e47ec412e0
-l
-<src/main/kotlin/br/com/matheuscordeiro/forum/models/Topic.kt,e\0\e07eb14f88b831031baf7bfdb86e2ce9f33054d8
 @
 build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
 
