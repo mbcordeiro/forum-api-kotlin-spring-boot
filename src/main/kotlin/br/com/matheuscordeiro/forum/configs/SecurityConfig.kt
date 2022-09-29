@@ -16,6 +16,7 @@ class SecurityConfig(private val userDetailsService: UserDetailsService) : WebSe
     override fun configure(httpSecurity: HttpSecurity?) {
         httpSecurity
             ?.authorizeHttpRequests()
+            ?.antMatchers("/topics")?.hasAnyAuthority("READ_ONLY")
             ?.anyRequest()
             ?.authenticated()
             ?.and()

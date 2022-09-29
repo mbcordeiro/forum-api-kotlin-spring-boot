@@ -1,6 +1,7 @@
 package br.com.matheuscordeiro.forum.models
 
 import org.hibernate.Hibernate
+import org.springframework.security.core.GrantedAuthority
 import javax.persistence.*
 
 @Entity
@@ -9,7 +10,7 @@ data class Role(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     val name: String,
-) {
+): GrantedAuthority {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
@@ -24,4 +25,6 @@ data class Role(
     override fun toString(): String {
         return this::class.simpleName + "(id = $id )"
     }
+
+    override fun getAuthority() = name
 }
