@@ -27,7 +27,7 @@ dependencies {
     implementation("org.flywaydb:flyway-core")
     implementation("org.springframework.boot:spring-boot-starter-cache")
     implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("io.jsonwebtoken:jjwt")
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
     runtimeOnly("org.postgresql:postgresql")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
