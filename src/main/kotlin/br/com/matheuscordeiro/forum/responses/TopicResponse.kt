@@ -1,6 +1,7 @@
 package br.com.matheuscordeiro.forum.responses
 
 import br.com.matheuscordeiro.forum.models.enums.TopicStatus
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 data class TopicResponse(
@@ -9,5 +10,5 @@ data class TopicResponse(
     val message: String,
     val status: TopicStatus,
     val dateCreation: LocalDateTime,
-    val dateUpdate: LocalDateTime?
+    val dateUpdate: LocalDate?
 )
