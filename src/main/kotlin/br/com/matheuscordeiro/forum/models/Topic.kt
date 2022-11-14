@@ -2,6 +2,7 @@ package br.com.matheuscordeiro.forum.models
 
 import br.com.matheuscordeiro.forum.models.enums.TopicStatus
 import org.hibernate.Hibernate
+import java.time.LocalDate
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -13,6 +14,7 @@ data class Topic(
     var tittle: String,
     var message: String,
     val dateCreation: LocalDateTime = LocalDateTime.now(),
+    var dateUpdate: LocalDate? = null,
     @ManyToOne
     val course: Course,
     @ManyToOne

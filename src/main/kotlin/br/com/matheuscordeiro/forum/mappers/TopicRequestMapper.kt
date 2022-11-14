@@ -4,6 +4,7 @@ import br.com.matheuscordeiro.forum.models.Topic
 import br.com.matheuscordeiro.forum.requests.NewTopicRequest
 import br.com.matheuscordeiro.forum.services.CourseService
 import br.com.matheuscordeiro.forum.services.UserService
+import java.time.LocalDate
 
 class TopicRequestMapper(
     private val courseService: CourseService,
@@ -14,7 +15,8 @@ class TopicRequestMapper(
             tittle = t.title,
             message = t.message,
             course = courseService.findById(t.idCourse),
-            author = userService.findById(t.idAuthor)
+            author = userService.findById(t.idAuthor),
+            dateUpdate = LocalDate.now()
         )
     }
 

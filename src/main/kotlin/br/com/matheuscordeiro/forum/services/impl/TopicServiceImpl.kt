@@ -15,6 +15,7 @@ import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 import javax.transaction.Transactional
 
 @Service
@@ -52,6 +53,7 @@ class TopicServiceImpl(
         val topic = findFirstById(updateTopicRequest.id)
         topic.tittle = updateTopicRequest.title
         topic.message = updateTopicRequest.message
+        topic.dateUpdate = LocalDate.now()
         topicRepository.save(topic)
         return topicResponseMapper.map(topic)
     }
