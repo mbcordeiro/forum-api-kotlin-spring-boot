@@ -15,5 +15,3 @@ s
 Csrc/main/kotlin/br/com/matheuscordeiro/forum/security/UserDetail.kt,d\d\dd7d9fdd1d4558b47392d03e72330e6bcc4f610e
 k
 ;src/main/kotlin/br/com/matheuscordeiro/forum/models/Role.kt,5\3\53c42d944608d3c28be651469865a9b0f8578c46
-@
-build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
