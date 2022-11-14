@@ -11,13 +11,9 @@ Nsrc/main/kotlin/br/com/matheuscordeiro/forum/services/impl/TopicServiceImpl.kt
 Lsrc/main/kotlin/br/com/matheuscordeiro/forum/repositories/TopicRepository.kt,b\2\b2f2a45c53d99d688eb41243fab4d818c975e112
 v
 Fsrc/main/kotlin/br/com/matheuscordeiro/forum/dto/TopicByCategoryDto.kt,6\6\66e20f5a9ddcd042bea191dead4bc1b3d321edc6
-v
-Fsrc/main/kotlin/br/com/matheuscordeiro/forum/configs/SecurityConfig.kt,b\e\bece02f1b9eb5ce53516a4e0355afca9da0891db
 s
 Csrc/main/kotlin/br/com/matheuscordeiro/forum/security/UserDetail.kt,d\d\dd7d9fdd1d4558b47392d03e72330e6bcc4f610e
 k
 ;src/main/kotlin/br/com/matheuscordeiro/forum/models/Role.kt,5\3\53c42d944608d3c28be651469865a9b0f8578c46
 @
 build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
-o
-?src/main/kotlin/br/com/matheuscordeiro/forum/configs/JWTUtil.kt,d\4\d4c0f1600ea09209bb97bb457573b7ddd2d5f31d
