@@ -47,6 +47,7 @@ class TopicServiceImpl(
     }
 
     @Transactional
+    @CacheEvict(value = ["topics"], allEntries = true)
     override fun update(updateTopicRequest: UpdateTopicRequest): TopicResponse {
         val topic = findFirstById(updateTopicRequest.id)
         topic.tittle = updateTopicRequest.title
@@ -56,6 +57,7 @@ class TopicServiceImpl(
         return topicResponseMapper.map(topic)
     }
 
+    @CacheEvict(value = ["topics"], allEntries = true)
     override fun delete(id: Long) {
         topicRepository.deleteById(id)
     }
