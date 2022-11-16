@@ -1,6 +1,6 @@
 package br.com.matheuscordeiro.forum.repositories
 
-import br.com.matheuscordeiro.forum.models.Course
+import br.com.matheuscordeiro.forum.models.Answer
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface CourseRepository : JpaRepository<Course, Long>
+interface AnswerRepository : JpaRepository<Answer, Long>

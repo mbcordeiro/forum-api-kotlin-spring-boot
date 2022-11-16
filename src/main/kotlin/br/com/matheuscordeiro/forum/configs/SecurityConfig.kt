@@ -21,7 +21,8 @@ class SecurityConfig(private val userDetailsService: UserDetailsService, private
     override fun configure(http: HttpSecurity?) {
         http
             ?.authorizeHttpRequests()
-            ?.antMatchers("/topics")?.hasAuthority("READ_ONLY")
+            ?.antMatchers("/topics")?.hasAuthority("WRITTEN_READING")
+            ?.antMatchers("/answers")?.hasAuthority("WRITTEN_READING")
             ?.antMatchers(HttpMethod.POST, "/login")?.permitAll()
             ?.antMatchers(HttpMethod.GET, "/swagger-ui/*")?.permitAll()
             ?.antMatchers(HttpMethod.GET, "/v3/api-docs/**")?.permitAll()

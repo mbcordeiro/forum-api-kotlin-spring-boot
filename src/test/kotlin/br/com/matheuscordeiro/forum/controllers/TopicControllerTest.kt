@@ -61,7 +61,7 @@ class TopicControllerTest {
     }
 
     private fun generateToken(): String? {
-        val authorities = mutableListOf(Role(1, "READY_ONLY"))
+        val authorities = mutableListOf(Role(1, "WRITTEN_READING"))
         val user = UserTest.buildToken()
         return jwtUtil.generateToken(user.email, authorities)
     }

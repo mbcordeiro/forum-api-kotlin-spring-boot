@@ -4,4 +4,4 @@ CREATE TABLE role(
     PRIMARY KEY(id)
 );
 
-INSERT INTO role (id, name) VALUES (1, 'READ_ONLY')
+INSERT INTO role (id, name) VALUES (1, 'WRITTEN_READING')
