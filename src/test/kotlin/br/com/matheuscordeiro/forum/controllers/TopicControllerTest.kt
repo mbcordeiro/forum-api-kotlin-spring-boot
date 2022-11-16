@@ -53,6 +53,13 @@ class TopicControllerTest {
         }.andExpect { status { isOk() } }
     }
 
+    @Test
+    fun `should return code 200 when calling topics by id and user is authenticated`() {
+        mockMvc.get(URI_WITH_PARAM.format("2")) {
+            headers { this.setBearerAuth(TOKEN.format(jwt)) }
+        }.andExpect { status { isOk() } }
+    }
+
     private fun generateToken(): String? {
         val authorities = mutableListOf(Role(1, "READY_ONLY"))
         val user = UserTest.buildToken()
