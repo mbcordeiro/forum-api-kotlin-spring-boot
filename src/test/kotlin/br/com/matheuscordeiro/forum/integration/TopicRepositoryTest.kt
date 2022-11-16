@@ -50,4 +50,10 @@ class TopicRepositoryTest {
         assertThat(report).isNotNull
         assertThat(report.first()).isExactlyInstanceOf(TopicByCategoryDto::class.java)
     }
+    @Test
+    fun `should find for a topic by course name`() {
+        topicRepository.save(topic)
+        val report = topicRepository.findByCourseName(nameCourse = "Kotlin Basic", pageable = pageRequest);
+        assertThat(report.totalElements).isEqualTo(1)
+    }
 }
