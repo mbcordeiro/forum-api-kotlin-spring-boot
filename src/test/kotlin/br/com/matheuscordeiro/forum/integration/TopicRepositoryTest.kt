@@ -1,7 +1,11 @@
 package br.com.matheuscordeiro.forum.integration
 
+import br.com.matheuscordeiro.forum.dto.TopicByCategoryDto
 import br.com.matheuscordeiro.forum.model.TopicTest
 import br.com.matheuscordeiro.forum.repositories.TopicRepository
+import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
@@ -24,7 +28,7 @@ class TopicRepositoryTest {
 
     companion object {
         @Container
-        private val postgresqlContainer = PostgreSQLContainer<Nothing>("postgres:latest").apply {
+        private val postgresqlContainer = PostgreSQLContainer<Nothing>("postgresql:latest").apply {
             withDatabaseName("testdb")
             withUsername("test")
             withPassword("12345")
@@ -37,5 +41,13 @@ class TopicRepositoryTest {
             registry.add("spring.datasource.password", postgresqlContainer::getPassword);
             registry.add("spring.datasource.username", postgresqlContainer::getUsername);
         }
+    }
+
+    @Test
+    fun `should generate report`() {
+        topicRepository.save(topic)
+        val report = topicRepository.reportByCategory();
+        assertThat(report).isNotNull
+        assertThat(report.first()).isExactlyInstanceOf(TopicByCategoryDto::class.java)
     }
 }
