@@ -30,6 +30,7 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-ui:1.6.12")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-mail")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation(platform("org.testcontainers:testcontainers-bom:1.17.5"))
     runtimeOnly("org.postgresql:postgresql")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
