@@ -4,10 +4,12 @@ import br.com.matheuscordeiro.forum.configs.JWTUtil
 import br.com.matheuscordeiro.forum.models.Role
 import br.com.matheuscordeiro.forum.models.UserTest
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
@@ -37,6 +39,11 @@ class TopicControllerTest {
             .apply<DefaultMockMvcBuilder?>(
                 SecurityMockMvcConfigurers
                     .springSecurity()).build()
+    }
+
+    @Test
+    fun `should return code 400 when calling topics without authentication`() {
+        mockMvc.get(URI).andExpect { status { is4xxClientError() } }
     }
 
     private fun generateToken(): String? {
