@@ -15,7 +15,6 @@ import org.testcontainers.containers.PostgreSQLContainer
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
 
-@DataJpaTest
 @Testcontainers
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class TopicRepositoryTest {
@@ -24,23 +23,6 @@ class TopicRepositoryTest {
 
     private val pageRequest = PageRequest.of(0, 5)
     private val topic = TopicTest.build()
-
-    companion object {
-        @Container
-        private val postgresqlContainer = PostgreSQLContainer<Nothing>("postgresql:latest").apply {
-            withDatabaseName("testdb")
-            withUsername("test")
-            withPassword("12345")
-        }
-
-        @JvmStatic
-        @DynamicPropertySource
-        fun properties(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url", postgresqlContainer::getJdbcUrl);
-            registry.add("spring.datasource.password", postgresqlContainer::getPassword);
-            registry.add("spring.datasource.username", postgresqlContainer::getUsername);
-        }
-    }
 
     @Test
     fun `should generate report`() {
