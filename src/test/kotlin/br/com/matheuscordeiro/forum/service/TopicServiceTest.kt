@@ -61,4 +61,15 @@ class TopicServiceTest {
         assertThat(slot.captured.message).isEqualTo(topic.message)
         assertThat(slot.captured.status).isEqualTo(topic.status)
     }
+
+    @Test
+    fun `should throw exception if topic does not exist`() {
+        every { topicRepository.findById(any()) } returns Optional.empty()
+
+        val actual = assertThrows<NotFoundException> {
+            topicServiceImpl.findById(2)
+        }
+
+        assertThat(actual.message).isEqualTo("Topic not found!")
+    }
 }
