@@ -46,4 +46,19 @@ class TopicServiceTest {
         assertThat(slot.captured.message).isEqualTo(topic.message)
         assertThat(slot.captured.status).isEqualTo(topic.status)
     }
+
+    @Test
+    fun `should list all topics when course name is null`() {
+        val slot = slot<Topic>()
+        every { topicResponseMapper.map(capture(slot)) } returns topicResponse
+        topicServiceImpl.findList(null, pageable)
+
+        verify(exactly = 0) { topicRepository.findAll(pageable) }
+        verify(exactly = 1) { topicRepository.findByCourseName(any(), any()) }
+        verify(exactly = 1) { topicResponseMapper.map(any()) }
+
+        assertThat(slot.captured.tittle).isEqualTo(topic.tittle)
+        assertThat(slot.captured.message).isEqualTo(topic.message)
+        assertThat(slot.captured.status).isEqualTo(topic.status)
+    }
 }
