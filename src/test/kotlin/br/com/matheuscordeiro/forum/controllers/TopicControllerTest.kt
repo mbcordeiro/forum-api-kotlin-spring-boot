@@ -46,6 +46,13 @@ class TopicControllerTest {
         mockMvc.get(URI).andExpect { status { is4xxClientError() } }
     }
 
+    @Test
+    fun `should return code 200 when calling topics and user is authenticated`() {
+        mockMvc.get(URI) {
+            headers { this.setBearerAuth(TOKEN.format(jwt)) }
+        }.andExpect { status { isOk() } }
+    }
+
     private fun generateToken(): String? {
         val authorities = mutableListOf(Role(1, "READY_ONLY"))
         val user = UserTest.buildToken()
