@@ -28,12 +28,15 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-cache")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
+    implementation(platform("org.testcontainers:testcontainers-bom:1.17.5"))
     runtimeOnly("org.postgresql:postgresql")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
     testImplementation("io.mockk:mockk:1.13.2")
     testImplementation("org.assertj:assertj-core")
+    testImplementation("org.testcontainers:postgresql:1.17.5")
+    testImplementation("org.testcontainers:junit-jupiter:1.17.5")
 }
 
 buildscript {
