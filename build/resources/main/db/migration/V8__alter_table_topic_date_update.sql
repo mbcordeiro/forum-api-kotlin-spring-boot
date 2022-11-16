@@ -1,0 +1,1 @@
+alter table topic add column date_update date

@@ -26,11 +26,9 @@ class TopicServiceImpl(
 ) : TopicService {
     @Cacheable("topics")
     override fun findList(nameCourse: String?, pageable: Pageable): Page<TopicResponse> {
-        val topics = if (nameCourse == null) {
-            topicRepository.findAll(pageable)
-        } else {
+        val topics = nameCourse?.let {
             topicRepository.findByCourseName(nameCourse, pageable)
-        }
+        } ?: topicRepository.findAll(pageable)
         return topics.map {
             topicResponseMapper.map(it)
         }
