@@ -15,9 +15,6 @@ o
 Psrc/main/kotlin/br/com/matheuscordeiro/forum/security/JWTAuthenticationFilter.kt,3\e\3ed3ea87d3608900d3c62f85e3328228efc91d63
 w
 Gsrc/main/kotlin/br/com/matheuscordeiro/forum/security/JWTLoginFilter.kt,9\c\9c07cc0b63c9874029074aaa69254a745600a0e4
-:
-
-Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
 m
 =src/main/kotlin/br/com/matheuscordeiro/forum/models/Answer.kt,0\c\0c167232b18a2bf3c668113b53bfeafa52895672
 m
