@@ -5,6 +5,7 @@ import br.com.matheuscordeiro.forum.requests.NewTopicRequest
 import br.com.matheuscordeiro.forum.requests.UpdateTopicRequest
 import br.com.matheuscordeiro.forum.responses.TopicResponse
 import br.com.matheuscordeiro.forum.services.TopicService
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
@@ -17,6 +18,7 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/topics")
+@SecurityRequirement(name = "bearerAuth")
 class TopicController(private val topicService: TopicService) {
     @GetMapping
     fun getList(

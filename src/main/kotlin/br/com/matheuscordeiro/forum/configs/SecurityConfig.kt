@@ -23,6 +23,8 @@ class SecurityConfig(private val userDetailsService: UserDetailsService, private
             ?.authorizeHttpRequests()
             ?.antMatchers("/topics")?.hasAuthority("READ_ONLY")
             ?.antMatchers(HttpMethod.POST, "/login")?.permitAll()
+            ?.antMatchers(HttpMethod.GET, "/swagger-ui/*")?.permitAll()
+            ?.antMatchers(HttpMethod.GET, "/v3/api-docs/**")?.permitAll()
             ?.anyRequest()
             ?.authenticated()
             ?.and()
