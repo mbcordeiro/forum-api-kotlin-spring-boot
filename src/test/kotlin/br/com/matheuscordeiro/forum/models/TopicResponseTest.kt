@@ -1,4 +1,4 @@
-package br.com.matheuscordeiro.forum.model
+package br.com.matheuscordeiro.forum.models
 
 import br.com.matheuscordeiro.forum.models.enums.TopicStatus
 import br.com.matheuscordeiro.forum.responses.TopicResponse

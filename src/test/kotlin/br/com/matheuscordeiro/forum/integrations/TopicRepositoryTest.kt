@@ -1,9 +1,8 @@
-package br.com.matheuscordeiro.forum.integration
+package br.com.matheuscordeiro.forum.integrations
 
 import br.com.matheuscordeiro.forum.dto.TopicByCategoryDto
-import br.com.matheuscordeiro.forum.model.TopicTest
+import br.com.matheuscordeiro.forum.models.TopicTest
 import br.com.matheuscordeiro.forum.repositories.TopicRepository
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -50,6 +49,7 @@ class TopicRepositoryTest {
         assertThat(report).isNotNull
         assertThat(report.first()).isExactlyInstanceOf(TopicByCategoryDto::class.java)
     }
+
     @Test
     fun `should find for a topic by course name`() {
         topicRepository.save(topic)

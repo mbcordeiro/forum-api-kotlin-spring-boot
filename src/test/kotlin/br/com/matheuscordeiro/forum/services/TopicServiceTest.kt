@@ -1,9 +1,9 @@
-package br.com.matheuscordeiro.forum.service
+package br.com.matheuscordeiro.forum.services
 
 import br.com.matheuscordeiro.forum.mappers.TopicRequestMapper
 import br.com.matheuscordeiro.forum.mappers.TopicResponseMapper
-import br.com.matheuscordeiro.forum.model.TopicResponseTest
-import br.com.matheuscordeiro.forum.model.TopicTest
+import br.com.matheuscordeiro.forum.models.TopicResponseTest
+import br.com.matheuscordeiro.forum.models.TopicTest
 import br.com.matheuscordeiro.forum.models.Topic
 import br.com.matheuscordeiro.forum.repositories.TopicRepository
 import br.com.matheuscordeiro.forum.services.impl.TopicServiceImpl

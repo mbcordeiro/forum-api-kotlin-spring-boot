@@ -1,6 +1,4 @@
-package br.com.matheuscordeiro.forum.model
-
-import br.com.matheuscordeiro.forum.models.User
+package br.com.matheuscordeiro.forum.models
 
 object UserTest {
     fun build() = User(id = 1, name = "Matheus", email = "matheus@gmail.com", password = "1234")

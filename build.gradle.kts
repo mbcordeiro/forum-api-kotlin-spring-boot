@@ -37,6 +37,7 @@ dependencies {
     testImplementation("org.assertj:assertj-core")
     testImplementation("org.testcontainers:postgresql:1.17.5")
     testImplementation("org.testcontainers:junit-jupiter:1.17.5")
+    testImplementation("org.springframework.security:spring-security-test")
 }
 
 buildscript {

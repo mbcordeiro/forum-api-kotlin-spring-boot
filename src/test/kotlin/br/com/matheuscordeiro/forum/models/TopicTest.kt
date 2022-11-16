@@ -1,6 +1,5 @@
-package br.com.matheuscordeiro.forum.model
+package br.com.matheuscordeiro.forum.models
 
-import br.com.matheuscordeiro.forum.models.Topic
 import br.com.matheuscordeiro.forum.models.enums.TopicStatus
 
 object TopicTest {
